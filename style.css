@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial";
+    transition: background-color 2s ease;
+
+}
+body{
+display: grid;
+gap : 10px;
+max-width : 250px;
+margin:auto;
+padding: 20px;
+background-color:#000;
+}
+.button{
+width: 70px;
+    height: 60px;
+    margin: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+background-color :#523F34;
+}
+#AC , #backspace , #pos-neg , #multiply , #divide , #plus , #minus{
+background-color: rgba(255, 165, 0, 0.3);
+color : #ca6c19;
+}
+[id^="row"] {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+#equal-to{
+background-color : orange;
+}
+#result {
+    width: 320px;
+    height: 60px;
+    font-size: 2rem;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    text-align: right;
