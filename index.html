@@ -1,125 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="author" content="Abhay Jadhav">
-<title>Calculator</title>
-<link rel="icon" href="calculator.jpg" type="image/x-icon">
-<link rel="stylesheet" href="style.css" type="text/css"> 
+  <meta charset="utf-8">
+  <meta name="author" content="Abhay Jadhav">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="icon" href="calculator.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" type="text/css"> 
+  <script src="script1.js" defer></script>
 </head>
 <body>
-<div id="container1">
-<!--<h1 id="heading" >Welcome to Calculator</h1>-->
-<input id="result" type="text">
-</div>
-<div id="row1">
-<button class="button" id="AC">AC</button>
-<button class="button" id="backspace">&#x232B</button>
-<button class="button" id="pos-neg">&plusmn;</button>
-<button class="button" id="divide">&divide;</button>
-</div>
-<div id="row2">
-<button class="button" id="7">7</button>
-<button class="button" id="8">8</button>
-<button class="button" id="9">9</button>
-<button class="button" id="multiply">&times;</button>
-</div>
-<div id="row3">
-<button class="button" id="4">4</button>
-<button class="button" id="5">5</button>
-<button class="button" id="6">6</button>
-<button class="button" id="minus">&minus;</button>
-</div>
-<div id="row4">
-<button class="button" id="1">1</button>
-<button class="button" id="2">2</button>
-<button class="button" id="3">3</button>
-<button class="button" id="plus">&plus;</button>
-</div>
-<div id="row5">
-<button class="button" id="percentage">%</button>
-<button class="button" id="0">0</button>
-<button class="button" id="." style="font-size:30px;line-height:0;padding-bottom:10px;">.</button>
-<button class="button" id="equal-to">=</button>
-</div>
-<script>
-const buttons = document.querySelectorAll(".button");
-const resultDisplay = document.getElementById("result");
-let expression = "";
-buttons.forEach(button => {
-button.addEventListener("click", function () {
-const value = button.id;
-if (!isNaN(value) || value === ".") {
-expression += value;
-updateDisplay(expression);
-} else {
-handleOperator(value);
-}
-});
-});
-function updateDisplay(value) {
-resultDisplay.value = value;
-}
-function handleOperator(opr) {
-switch (opr) {
-case "AC":
-expression = "";
-updateDisplay("0");
-break;
-case "backspace":
-expression = expression.slice(0, -1);
-updateDisplay(expression || "0");
-break;
-case "pos-neg":
-toggleSign();
-break;
-case "equal-to":
-try {
-const safeExpression = expression
-.replace(/×/g, "*")
-.replace(/÷/g, "/")
-.replace(/%/g, "/100");
-const result = eval(safeExpression);
-expression = String(result);
-updateDisplay(expression);
-} catch (e) {
-updateDisplay("Error");
-expression = "";
-}
-break;
-case "plus":
-expression += "+";
-updateDisplay(expression);
-break;
-case "minus":
-expression += "-";
-updateDisplay(expression);
-break;
-case "multiply":
-expression += "*";
-updateDisplay(expression);
-break;
-case "divide":
-expression += "/";
-updateDisplay(expression);
-break;
-case "percentage":
-expression += "/100";
-updateDisplay(expression);
-break;
-}
-}
-function toggleSign() {
-const match = expression.match(/(-?\d+\.?\d*)$/);
-if (match) {
-const number = match[0];
-const toggled = number.startsWith("-") ? number.slice(1) : "-" + number;
-expression = expression.slice(0, -number.length) + toggled;
-updateDisplay(expression);
-}
-}
-updateDisplay("0");
-</script>
+  <div id="calculator">
+    <h1 id="heading">Welcome to Calculator</h1>
+    <input id="result" type="text">
+
+    <div id="row1">
+      <button class="operator" id="AC">AC</button>
+      <button class="operator" id="backspace">&#x232B</button>
+      <button class="operator" id="pos-neg">&plusmn;</button>
+      <button class="operator" id="/">÷</button>
+    </div>
+    <div id="row2">
+      <button class="number" id="7">7</button>
+      <button class="number" id="8">8</button>
+      <button class="number" id="9">9</button>
+      <button class="operator" id="*">×</button>
+    </div>
+    <div id="row3">
+      <button class="number" id="4">4</button>
+      <button class="number" id="5">5</button>
+      <button class="number" id="6">6</button>
+      <button class="operator" id="-">−</button>
+    </div>
+    <div id="row4">
+      <button class="number" id="1">1</button>
+      <button class="number" id="2">2</button>
+      <button class="number" id="3">3</button>
+      <button class="operator" id="+">+</button>
+    </div>
+    <div id="row5">
+      <button class="operator" id="%">%</button>
+      <button class="number" id="0">0</button>
+      <button class="number" id=".">.</button>
+      <button class="equals" id="=">=</button>
+    </div>
+  </div>
 </body>
+</html>
 </html>
 
